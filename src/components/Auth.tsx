@@ -13,7 +13,7 @@ interface AuthFormData {
 }
 
 const Auth = () => {
-  const [authType, setAuthType] = useState<AuthType>(AuthType.SignUp);
+  const [authType, setAuthType] = useState<AuthType>(AuthType.Login);
   const [authError, setAuthError] = useState<string | null>(null);
 
   const {
