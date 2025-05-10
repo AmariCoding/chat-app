@@ -5,7 +5,7 @@ interface User {
   email: string;
 }
 
-interface Room {
+export interface Room {
   id: number;
   name: string;
 }

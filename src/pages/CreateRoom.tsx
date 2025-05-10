@@ -1,12 +1,15 @@
 import { useForm } from "react-hook-form";
 import { supabase } from "../supabaseClient";
 import { useChatStore } from "../store/chatStore";
+import { useNavigate } from "react-router-dom";
 
 interface RoomFormData {
   name: string;
 }
 
 const CreateRoom = () => {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -27,6 +30,7 @@ const CreateRoom = () => {
     } else {
       const room = newRoom[0];
       useChatStore.getState().setCurrentRoom({ id: room.id, name: room.name });
+      navigate("/");
     }
   };
 
