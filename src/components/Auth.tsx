@@ -2,10 +2,10 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { supabase } from "../supabaseClient";
 
-enum AuthType {
-  Login = "login",
-  SignUp = "signup",
-}
+const AuthType = {
+  Login: "login",
+  SignUp: "signup",
+} as const;
 
 interface AuthFormData {
   email: string;
@@ -13,7 +13,9 @@ interface AuthFormData {
 }
 
 const Auth = () => {
-  const [authType, setAuthType] = useState<AuthType>(AuthType.Login);
+  const [authType, setAuthType] = useState<
+    (typeof AuthType)[keyof typeof AuthType]
+  >(AuthType.Login);
   const [authError, setAuthError] = useState<string | null>(null);
 
   const {
